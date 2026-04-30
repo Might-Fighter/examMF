@@ -1,5 +1,6 @@
 package exammf.main;
 
+import exammf.controlador.TareaControlador;
 import exammf.modelo.GestorTareas;
 import exammf.vista.TareaVista;
 import javax.swing.SwingUtilities;
@@ -14,13 +15,16 @@ public class Principal {
     public static void main(String[] args) {
         // Ejecutar en Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
-            // Crear modelo
+            // 1. Crear modelo
             GestorTareas modelo = new GestorTareas();
 
-            // Crear vista
+            // 2. Crear vista
             TareaVista vista = new TareaVista();
+            
+            // 3. Crear controlador (conecta modelo y vista)
+            TareaControlador controlador = new TareaControlador(vista, modelo);
 
-            // Mostrar ventana
+            // 4. Mostrar ventana
             vista.setVisible(true);
         });
     }
